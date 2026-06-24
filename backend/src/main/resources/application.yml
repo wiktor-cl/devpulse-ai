@@ -1,0 +1,102 @@
+spring:
+  application:
+    name: devpulse-ai
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:devpulse}
+    username: ${DB_USERNAME:devpulse}
+    password: ${DB_PASSWORD:devpulse123}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_schema: public
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+  info:
+    title: DevPulse AI API
+    version: 1.0.0
+    description: AI-powered developer productivity platform API
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:devpulse-super-secret-key-change-in-production-min-256-bits}
+    expiration: ${JWT_EXPIRATION:86400000}       # 24h
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}  # 7d
+
+  openai:
+    api-key: ${OPENAI_API_KEY:sk-placeholder}
+    model: ${OPENAI_MODEL:gpt-4o-mini}
+    max-tokens: 2000
+
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+
+  websocket:
+    endpoint: /ws
+    topic-prefix: /topic
+    app-prefix: /app
+
+logging:
+  level:
+    com.devpulse: ${LOG_LEVEL:INFO}
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized

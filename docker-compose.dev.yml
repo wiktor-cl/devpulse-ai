@@ -1,0 +1,51 @@
+version: '3.9'
+
+# Development override - hot reload, no container builds for app code
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: devpulse-postgres-dev
+    environment:
+      POSTGRES_DB: devpulse
+      POSTGRES_USER: devpulse
+      POSTGRES_PASSWORD: devpulse123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devpulse"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - devpulse-dev
+
+  redis:
+    image: redis:7-alpine
+    container_name: devpulse-redis-dev
+    ports:
+      - "6379:6379"
+    networks:
+      - devpulse-dev
+
+  # Optional: pgAdmin for DB inspection
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: devpulse-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@devpulse.ai
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - devpulse-dev
+    profiles:
+      - tools
+
+volumes:
+  postgres_dev_data:
+
+networks:
+  devpulse-dev:
+    driver: bridge
