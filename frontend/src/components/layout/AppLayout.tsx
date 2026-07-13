@@ -1,8 +1,7 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 import {
-  LayoutDashboard, FolderKanban, Brain, Bell, Settings,
-  Shield, LogOut, Menu, X, Zap, User, Moon, Sun, ChevronRight
+  LayoutDashboard, FolderKanban, Brain, Bell,
+  Shield, LogOut, Menu, X, Zap, User, Moon, Sun
 } from 'lucide-react'
 import { useAuthStore } from '@/store/authStore'
 import { useUIStore } from '@/store/uiStore'
@@ -31,7 +30,7 @@ export default function AppLayout() {
   })
 
   const handleLogout = async () => {
-    try { await authApi.logout() } catch {}
+    try { await authApi.logout() } catch { /* best-effort: proceed with local logout regardless */ }
     logout()
     navigate('/login')
   }

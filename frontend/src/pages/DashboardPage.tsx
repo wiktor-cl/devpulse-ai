@@ -9,7 +9,6 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/utils/cn'
-import { formatDistanceToNow } from 'date-fns'
 
 const PRIORITY_COLORS: Record<string, string> = {
   CRITICAL: 'text-red-500 bg-red-500/10',

@@ -117,7 +117,7 @@ export default function AdminPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {usersData?.content?.map((user: any) => (
+                  {usersData?.content?.map((user) => (
                     <tr key={user.id} className="border-b border-border last:border-0 hover:bg-accent/30 transition-colors">
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
@@ -204,7 +204,7 @@ export default function AdminPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {logsData?.content?.map((log: any) => (
+                    {logsData?.content?.map((log) => (
                       <tr key={log.id} className="border-b border-border last:border-0 hover:bg-accent/30">
                         <td className="px-4 py-3">
                           <span className="font-mono text-xs bg-muted px-2 py-0.5 rounded">{log.action}</span>

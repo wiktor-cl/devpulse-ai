@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { projectsApi, tasksApi } from '@/api/services'
 import {
   ArrowLeft, KanbanSquare, GitBranch, Calendar, Users,
-  Plus, Loader2, AlertCircle, Pencil, Trash2, CheckCircle2
+  Plus, Loader2, AlertCircle, Trash2, CheckCircle2
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { format } from 'date-fns'

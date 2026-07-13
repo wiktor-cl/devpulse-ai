@@ -15,8 +15,6 @@ const queryClient = new QueryClient({
   },
 })
 
-// Init theme from store
-const storedAuth = localStorage.getItem('devpulse-auth')
 document.documentElement.classList.add('dark')
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

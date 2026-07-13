@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import axios from 'axios'
 import { Zap, Loader2 } from 'lucide-react'
 import { authApi } from '@/api/services'
 import { useAuthStore } from '@/store/authStore'
@@ -30,8 +31,9 @@ export default function RegisterPage() {
       const res = await authApi.register(data)
       setAuth(res.user, res.accessToken, res.refreshToken)
       navigate('/dashboard')
-    } catch (err: any) {
-      setError(err.response?.data?.detail ?? 'Registration failed.')
+    } catch (err) {
+      const detail = axios.isAxiosError(err) ? err.response?.data?.detail : undefined
+      setError(detail ?? 'Registration failed.')
     }
   }
 

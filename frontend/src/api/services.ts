@@ -1,7 +1,7 @@
 import api from './client'
 import type {
-  AuthResponse, DashboardStats, Page, Project, ProjectRequest,
-  Task, TaskRequest, Notification, AiReport
+  AuditLog, AuthResponse, DashboardStats, Page, Project, ProjectRequest,
+  Task, TaskRequest, Notification, AiReport, User
 } from '@/types'
 
 // Auth
@@ -76,10 +76,10 @@ export const aiApi = {
 export const adminApi = {
   getStats: () => api.get<Record<string, number>>('/admin/stats').then(r => r.data),
   getUsers: (params?: { search?: string; page?: number; size?: number }) =>
-    api.get('/admin/users', { params }).then(r => r.data),
+    api.get<Page<User>>('/admin/users', { params }).then(r => r.data),
   toggleUserActive: (id: string) => api.patch(`/admin/users/${id}/toggle-active`).then(r => r.data),
   changeRole: (id: string, role: string) =>
     api.patch(`/admin/users/${id}/role`, { role }).then(r => r.data),
   getActivityLogs: (page = 0) =>
-    api.get('/admin/activity-logs', { params: { page } }).then(r => r.data),
+    api.get<Page<AuditLog>>('/admin/activity-logs', { params: { page } }).then(r => r.data),
 }

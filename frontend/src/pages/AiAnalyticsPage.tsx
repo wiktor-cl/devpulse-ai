@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { aiApi } from '@/api/services'
 import {
   Brain, Sparkles, Send, Loader2, FileText, Calendar,
-  RefreshCw, ChevronDown, ChevronUp, Bot, User
+  ChevronDown, ChevronUp, Bot, User
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { format } from 'date-fns'

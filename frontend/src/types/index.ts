@@ -134,6 +134,15 @@ export interface AiReport {
   periodEnd?: string
 }
 
+// Admin
+export interface AuditLog {
+  id: string
+  action: string
+  entityType: string
+  description: string
+  createdAt: string
+}
+
 // Pagination
 export interface Page<T> {
   content: T[]

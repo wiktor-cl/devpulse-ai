@@ -5,7 +5,7 @@ import { projectsApi, tasksApi } from '@/api/services'
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
 import { ArrowLeft, Plus, Loader2, AlertCircle, GripVertical, Clock, User } from 'lucide-react'
 import { cn } from '@/utils/cn'
-import type { Task, TaskStatus, Priority } from '@/types'
+import type { TaskStatus, Priority } from '@/types'
 import CreateTaskModal from '@/components/tasks/CreateTaskModal'
 
 const COLUMNS: { id: TaskStatus; label: string; color: string }[] = [

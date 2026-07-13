@@ -4,7 +4,7 @@ import { projectsApi } from '@/api/services'
 import { Link } from 'react-router-dom'
 import {
   Plus, Search, FolderKanban, Calendar, Users, Loader2,
-  MoreHorizontal, Pencil, Trash2, GitBranch, KanbanSquare
+  MoreHorizontal, Pencil, Trash2, KanbanSquare
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import type { Project, ProjectStatus, Priority } from '@/types'
