@@ -2,6 +2,7 @@
 
 > **AI-powered developer productivity and project monitoring platform**
 
+[![CI/CD](https://github.com/wiktor-cl/devpulse-ai/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/wiktor-cl/devpulse-ai/actions/workflows/ci-cd.yml)
 [![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://reactjs.org/)
@@ -118,7 +119,7 @@ DevPulse AI is a production-ready SaaS platform that helps software development 
 ### Option A — Docker Compose (recommended)
 
 ```bash
-git clone https://github.com/yourusername/devpulse-ai.git
+git clone https://github.com/wiktor-cl/devpulse-ai.git
 cd devpulse-ai
 
 # Copy and configure environment
